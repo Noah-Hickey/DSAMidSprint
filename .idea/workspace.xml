@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be811355-821d-47aa-9fe3-8ee9350968df" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/todo/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/todo/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/todo/TaskList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/todo/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/todo/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/Task.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +64,8 @@
       <option name="presentableId" value="Default" />
       <updated>1750615665828</updated>
       <workItem from="1750615666793" duration="1362000" />
-      <workItem from="1750617537257" duration="254000" />
+      <workItem from="1750617537257" duration="2096000" />
+      <workItem from="1750695099042" duration="537000" />
     </task>
     <servers />
   </component>
