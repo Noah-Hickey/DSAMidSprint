@@ -46,17 +46,54 @@ public class Main {
         }
 
 
-
-
     }
 
     private static void printTasks() {
+        System.out.print("Enter user name to print tasks: ");
+        String userName = scanner.nextLine();
+        for (User user : users) {
+            if (user.getName().equalsIgnoreCase(userName)) {
+                user.printTasks();
+                return;
+            }
+        }
+        System.out.println("User not found: " + userName);
     }
 
     private static void markTaskAsCompleted() {
+        System.out.print("Enter user name: ");
+        String userName = scanner.nextLine();
+        for (User user : users) {
+            if (user.getName().equalsIgnoreCase(userName)) {
+                System.out.print("Enter task title to mark as completed: ");
+                String title = scanner.nextLine();
+                System.out.print("Enter task description to mark as completed: ");
+                String description = scanner.nextLine();
+                user.markTaskAsCompleted(title, description);
+                return;
+            }
+        }
+        System.out.println("Sorry! User not found: " + userName);
     }
 
     private static void addTask() {
+        System.out.println("Enter the user's name to assign a task: ");
+        String userName = scanner.nextLine();
+        for (User user : users) {
+            if (user.getName().equalsIgnoreCase(userName)) {
+                System.out.print("Enter task title: ");
+                String title = scanner.nextLine();
+                System.out.print("Enter task description: ");
+                String description = scanner.nextLine();
+                if (title.isEmpty() || description.isEmpty()) {
+                    System.out.println("Title and description cannot be empty.");
+                    return;
+                }
+                System.out.println("Success! Adding task for user: " + userName);
+                user.addTask(title, description);
+                return;
+            }
+        }
     }
 
     private static void createUser() {
