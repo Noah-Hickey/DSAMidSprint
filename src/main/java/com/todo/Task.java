@@ -11,15 +11,6 @@ public class Task {
         this.completed = false;
     }
 
-    // Getters & Setters //
-//    public String setTitle(String title) {
-//        return this.title;
-//    }
-//
-//    public String setDescription(String description) {
-//        return this.description;
-//    }
-
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
