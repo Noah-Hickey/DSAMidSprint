@@ -1,20 +1,37 @@
 package com.todo;
 
+import java.util.ArrayList;
+
 public class User {
 
     private String name;
     private TaskList toDoList;
+    private static ArrayList<User> allUsers;
 
     // Constructor //
-    public User(String name){
-        this.name = name;
+    public User(String name, ArrayList<User> users){
+        allUsers = users;
+        setName(name); // Using setter to validate name //
         this.toDoList = new TaskList();
     }
 
+
     // Getters & Setters //
 
-    public void setName(String name){
-        this.name = name;
+    public void setName(String name) throws IllegalArgumentException {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
+
+        // Check for duplicates (excluding current user)
+        if (allUsers != null) {
+            for (User user : allUsers) {
+                if (user != this && user.getName().equalsIgnoreCase(name.trim())) {
+                    throw new IllegalArgumentException("User with name '" + name + "' already exists");
+                }
+            }
+        }
+        this.name = name.trim();
     }
 
     public String getName() {

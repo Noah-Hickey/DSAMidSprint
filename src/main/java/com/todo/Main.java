@@ -100,8 +100,24 @@ public class Main {
     private static void createUser() {
         System.out.print("Enter user name: ");
         String name = scanner.nextLine();
-        User user = new User(name);
-        users.add(user);
-        System.out.println("Success! User created: " + name);
+     try {
+         if (name.isEmpty()) {
+             System.out.println("Sorry! User name cannot be empty.");
+             return;
+         }
+         for (User user : users) {
+             if (user.getName().equalsIgnoreCase(name)) {
+                 System.out.println("Sorry! User already exists: " + name);
+                 return;
+             }
+         }
+         User newUser = new User(name, users);
+         users.add(newUser);
+         System.out.println("Success! User " + name + " has been created.");
+     }catch (IllegalArgumentException e) {
+         System.out.println("Sorry! " + e.getMessage());
+
+     }
+
     }
 }
