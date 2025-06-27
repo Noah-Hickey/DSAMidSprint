@@ -86,7 +86,7 @@ public class Main {
                 System.out.print("Enter task description: ");
                 String description = scanner.nextLine();
                 if (title.isEmpty() || description.isEmpty()) {
-                    System.out.println("Title and description cannot be empty.");
+                    System.out.println("Sorry! Title and description cannot be empty.");
                     return;
                 }
                 System.out.println("Success! Adding task for user: " + userName);
@@ -94,6 +94,7 @@ public class Main {
                 return;
             }
         }
+        System.out.println("Sorry! User not found: " + userName);
     }
 
     private static void createUser() {

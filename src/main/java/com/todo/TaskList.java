@@ -14,21 +14,21 @@ public class TaskList {
     public void addTask(String title, String description){
 
         tasks.add(new Task(title, description));
-        System.out.println("Task added: " + title + " - " + description);
+        System.out.println("Task added: " + title + " Description: " + description);
 
     }
 
     public void markTaskAsCompleted(String title, String description) {
-       for (Task task : tasks){
+        for (Task task : tasks){
             if (task.getTitle().equals(title) && task.getDescription().equals(description)) {
                 task.markAsCompleted();
-                System.out.println("Task: " + title + "Description: " + description);
+                System.out.println("Task: " + title + " Description: " + description + " marked as completed!");
                 return;
             }
         }
-        System.out.println("Task: " + title + "Description: " + description + " not found in the list.");
+        System.out.println("Task: " + title + " Description: " + description + " not found in the list.");
+    }
 
-       }
 
        public void printAllTasks() {
            if (tasks.isEmpty()) {
@@ -38,7 +38,8 @@ public class TaskList {
            System.out.println("--- To-Do List ---");
            int taskNumber = 1;
            for (Task task : tasks) {
-               System.out.println(taskNumber + ". " + task);
+               String status = task.isCompleted() ? "☑️ COMPLETED" : "⭕ PENDING";
+               System.out.println(taskNumber + ". [" + status + "] " + task.getTitle() + " - " + task.getDescription());
                taskNumber++;
            }
            System.out.println("--------------------");

@@ -13,9 +13,8 @@ public class User {
 
     // Getters & Setters //
 
-    public String setName(String name){
+    public void setName(String name){
         this.name = name;
-        return this.name;
     }
 
     public String getName() {
@@ -36,7 +35,7 @@ public class User {
         System.out.println();
         System.out.println("Tasks for " + this.name);
         System.out.println("--------------------------------");
-        System.out.println(this.toDoList.toString());
+        this.toDoList.printAllTasks();
     }
 
 }
