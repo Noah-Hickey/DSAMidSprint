@@ -80,16 +80,15 @@ public class TaskList {
         return getTotalTasks() - getCompletedTasksCount();
     }
 
-    public boolean removeTask(String title, String description) {
+    public boolean removeTask(String title) {
         for (Task task : tasks) {
-            if (task.getTitle().equalsIgnoreCase(title.trim()) &&
-                    task.getDescription().equalsIgnoreCase(description.trim())) {
+            if (task.getTitle().equalsIgnoreCase(title.trim())) {
                 tasks.remove(task);
-                System.out.println("Task: " + title + " Description: " + description + " removed from the list.");
+                System.out.println("Task: " + title + " Description: " + " removed from the list.");
                 return true;
             }
         }
-        System.out.println("Task: " + title + " Description: " + description + " not found in the list.");
+        System.out.println("Task: " + title + " Description: " + " not found in the list.");
         return false;
     }
 
@@ -129,6 +128,21 @@ public class TaskList {
             System.out.println("No completed tasks yet.");
         }
         System.out.println("-----------------------");
+    }
+
+    public void printLastTask() {
+        if (tasks.isEmpty()) {
+            System.out.println("No tasks available to display.");
+            return;
+        }
+
+        Task lastTask = tasks.getLast();
+        String status = lastTask.isCompleted() ? "☑️ COMPLETED" : "⭕ PENDING";
+
+        System.out.println("--- Last Task ---");
+        System.out.println("[" + status + "] " + lastTask.getTitle() + " - " + lastTask.getDescription());
+        System.out.println("------------------");
+
     }
 }
 

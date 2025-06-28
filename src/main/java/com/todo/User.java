@@ -48,8 +48,8 @@ public class User {
         this.toDoList.markTaskAsCompleted(title, description);
     }
 
-    public boolean removeTask(String title, String description) {
-        return this.toDoList.removeTask(title, description);
+    public boolean removeTask(String title) {
+        return this.toDoList.removeTask(title);
     }
 
     public void printTasks(){
@@ -81,6 +81,13 @@ public class User {
     }
     public int getPendingTasks() {
         return this.toDoList.getPendingTasksCount();
+    }
+
+    public void printLastTask() {
+        System.out.println();
+        System.out.println("Last Task for " + this.name);
+        System.out.println("--------------------------------");
+        this.toDoList.printLastTask();
     }
 
     @Override

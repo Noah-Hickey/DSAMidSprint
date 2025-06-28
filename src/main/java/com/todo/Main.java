@@ -57,29 +57,20 @@ public class Main {
     }
 
     private static void printMainMenu() {
+        System.out.println();
         System.out.println("Main Menu:");
+        System.out.println("=====================");
         System.out.println("1. Create User");
         System.out.println("2. Add Task");
         System.out.println("3. Mark Task as Completed");
         System.out.println("4. Print Tasks");
         System.out.println("5. Remove Task");
         System.out.println("6. List All Users");
-        System.out.println("7. Show User Statistics");
-        System.out.println("8. Exit");
-        System.out.print("Please select an option (1-8): ");
+        System.out.println("7. Exit");
+        System.out.println();
+        System.out.print("Please select an option (1-7): ");
     }
 
-    private static void printTasks() {
-        System.out.print("Enter user name to print tasks: ");
-        String userName = scanner.nextLine();
-        for (User user : users) {
-            if (user.getName().equalsIgnoreCase(userName)) {
-                user.printTasks();
-                return;
-            }
-        }
-        System.out.println("User not found: " + userName);
-    }
 
     private static void markTaskAsCompleted() {
         System.out.print("Enter user name: ");
@@ -142,7 +133,7 @@ public class Main {
 
     }
 
-    private static void printTasksMenu(){
+    private static void printTasksMenu() {
         System.out.println();
         System.out.println("=====================");
         System.out.println(" Task Printing Menu:");
@@ -151,13 +142,14 @@ public class Main {
         System.out.println("1. Print All Tasks");
         System.out.println("2. Print Only Pending Tasks");
         System.out.println("3. Print Only Completed Tasks");
-        System.out.print("Please select an option (1-3): ");
+        System.out.println("4. Print Last Tasks for a Specific User");
+        System.out.print("Please select an option (1-5): ");
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
         switch (choice) {
             case 1:
-                printTasks();
+                listAllTasks();
                 break;
             case 2:
                 printOnlyPendingTasks();
@@ -165,10 +157,17 @@ public class Main {
             case 3:
                 printOnlyCompletedTasks();
                 break;
+            case 4:
+                printLastTasksForUser();
+                break;
+            case 5:
+                return;
             default:
                 System.out.println("Invalid choice. Please select a number between 1-3.");
         }
     }
+
+
     private static void printOnlyPendingTasks() {
         System.out.print("Enter user name to print only pending tasks: ");
         String userName = scanner.nextLine();
@@ -200,9 +199,7 @@ public class Main {
             if (user.getName().equalsIgnoreCase(userName)) {
                 System.out.print("Enter task title to remove: ");
                 String title = scanner.nextLine();
-                System.out.print("Enter task description to remove: ");
-                String description = scanner.nextLine();
-                if (user.removeTask(title, description)) {
+                if (user.removeTask(title)) {
                     System.out.println("Task removed successfully.");
                 } else {
                     System.out.println("Task not found or could not be removed.");
@@ -222,6 +219,45 @@ public class Main {
                 System.out.println("- " + user.getName());
             }
         }
+    }
+
+    private static void listAllTasks() {
+        // Check if there are no users
+        if (users.isEmpty()) {
+            System.out.println("No users found.");
+            return;
+        }
+
+        // Check if any user has tasks
+        boolean hasAnyTasks = false;
+        for (User user : users) {
+            if (user.getTotalTasks() > 0) {
+                hasAnyTasks = true;
+                break;
+            }
+        }
+        if (!hasAnyTasks) {
+            System.out.println("No tasks found for any user.");
+            return;
+        }
+        System.out.println("List of All Tasks:");
+        for (User user : users) {
+            System.out.println("Tasks for " + user.getName() + ":");
+            user.printTasks();
+        }
+    }
+
+    private static void printLastTasksForUser() {
+        System.out.print("Enter user name to print last task: ");
+        String userName = scanner.nextLine();
+        for (User user : users) {
+            if (user.getName().equalsIgnoreCase(userName)) {
+                user.printLastTask();
+                return;
+            }
+        }
+        System.out.println("User not found: " + userName);
+
     }
 
 }
