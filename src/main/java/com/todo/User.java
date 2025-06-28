@@ -73,13 +73,13 @@ public class User {
         this.toDoList.printOnlyCompletedTasks();
     }
 
-    public int GetTotalTasks() {
+    public int getTotalTasks() {
         return toDoList.getTotalTasks();
     }
-    public int getCompletedTasksCount() {
+    public int getCompletedTasks() {
         return toDoList.getCompletedTasksCount();
     }
-    public int getPendingTasksCount() {
+    public int getPendingTasks() {
         return this.toDoList.getPendingTasksCount();
     }
 

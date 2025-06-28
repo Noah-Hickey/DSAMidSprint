@@ -43,9 +43,6 @@ public class Main {
                         listAllUsers();
                         break;
                     case 7:
-                        showUserStats();
-                        break;
-                    case 8:
                         System.out.println("Thank you for using the To-Do List Application!");
                         System.out.println("Goodbye!");
                         return;
@@ -194,6 +191,37 @@ public class Main {
             }
         }
         System.out.println("Sorry! User not found: " + userName);
+    }
+
+    private static void removeTask() {
+        System.out.print("Enter user name to remove a task: ");
+        String userName = scanner.nextLine();
+        for (User user : users) {
+            if (user.getName().equalsIgnoreCase(userName)) {
+                System.out.print("Enter task title to remove: ");
+                String title = scanner.nextLine();
+                System.out.print("Enter task description to remove: ");
+                String description = scanner.nextLine();
+                if (user.removeTask(title, description)) {
+                    System.out.println("Task removed successfully.");
+                } else {
+                    System.out.println("Task not found or could not be removed.");
+                }
+                return;
+            }
+        }
+        System.out.println("Sorry! User not found: " + userName);
+    }
+
+    private static void listAllUsers() {
+        if (users.isEmpty()) {
+            System.out.println("No users found.");
+        } else {
+            System.out.println("List of Users:");
+            for (User user : users) {
+                System.out.println("- " + user.getName());
+            }
+        }
     }
 
 }
