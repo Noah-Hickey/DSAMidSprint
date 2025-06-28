@@ -48,11 +48,48 @@ public class User {
         this.toDoList.markTaskAsCompleted(title, description);
     }
 
+    public boolean removeTask(String title, String description) {
+        return this.toDoList.removeTask(title, description);
+    }
+
     public void printTasks(){
         System.out.println();
-        System.out.println("Tasks for " + this.name);
+        System.out.println("📋Tasks for " + this.name);
         System.out.println("--------------------------------");
         this.toDoList.printAllTasks();
     }
 
+    public void printOnlyPendingTasks(){
+        System.out.println();
+        System.out.println("⭕️Pending Tasks for " + this.name);
+        System.out.println("--------------------------------");
+        this.toDoList.printOnlyPendingTasks();
+    }
+
+    public void printOnlyCompletedTasks(){
+        System.out.println();
+        System.out.println("☑️Completed Tasks for " + this.name);
+        System.out.println("--------------------------------");
+        this.toDoList.printOnlyCompletedTasks();
+    }
+
+    public int GetTotalTasks() {
+        return toDoList.getTotalTasks();
+    }
+    public int getCompletedTasksCount() {
+        return toDoList.getCompletedTasksCount();
+    }
+    public int getPendingTasksCount() {
+        return this.toDoList.getPendingTasksCount();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", totalTasks=" + getTotalTasks() +
+                ", pendingTasks=" + getPendingTasks() +
+                ", completedTasks=" + getCompletedTasks() +
+                '}';
+    }
 }
